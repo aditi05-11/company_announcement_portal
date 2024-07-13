@@ -1,4 +1,4 @@
-# README
+# company_announcement_portal
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
