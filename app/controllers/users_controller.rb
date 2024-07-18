@@ -6,8 +6,7 @@ class UsersController < ApplicationController
 
 	def create
     @user = User.new(user_params)
-    @user.date_of_birth = parse_date_of_birth(params[:user])
-
+    @user.date_of_birth = parse_date_of_birth(date_of_birth_params)
     if @user.save
       flash[:notice] = "Welcome to the company announcement portal, #{@user.name}"
       redirect_to root_path
@@ -40,12 +39,17 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :email, :bio, :date_of_birth)
+		params.require(:user).permit(:name, :email, :bio, :date_of_birth, :password, :password_confirmation)
 	end
 
-	def parse_date_of_birth(user_params)
-    Date.new(user_params["date_of_birth_year"].to_i, user_params["date_of_birth_month"].to_i, user_params["date_of_birth_day"].to_i)
+	def date_of_birth_params
+    params.require(:user).permit(:date_of_birth_year, :date_of_birth_month, :date_of_birth_day)
   end
+
+  def parse_date_of_birth(date_params)
+    Date.new(date_params["date_of_birth_year"].to_i, date_params["date_of_birth_month"].to_i, date_params["date_of_birth_day"].to_i)
+  end
+
 
 
 end
