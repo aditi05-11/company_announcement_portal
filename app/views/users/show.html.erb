@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-4"><%= @user.name %>'s Profile</h5>
+          <hr>
+          <div class="mb-3">
+            <p class="card-text"><i class="fas fa-pencil-alt me-2"></i><strong>Bio:</strong></p>
+            <p class="card-text"><%= @user.bio %></p>
+          </div>
+          <hr>
+          <div class="mb-3">
+            <p class="card-text"><i class="fas fa-calendar-alt me-2"></i><strong>Date of Birth:</strong></p>
+            <p class="card-text"><%= @user.date_of_birth.strftime("%B %e, %Y") %></p>
+          </div>
+            <div class="text-center">
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+           </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
