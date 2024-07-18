@@ -18,6 +18,7 @@
           <div class="col-md-6"><br>
             <div class="card">
               <div class="card-body">
+                <h1>sign up</h1>
                 <%= render '/shared/errors', obj: @user %>
                 <%= form_with model: @user do |f| %>
                   <p>
@@ -39,6 +40,14 @@
                       <%= f.select :date_of_birth_month, options_for_select(Date::MONTHNAMES.compact.each_with_index.map { |name, index| [name, index + 1] }), {}, { class: "form-control" } %>
                       <%= f.select :date_of_birth_day, options_for_select((1..31).to_a), {}, { class: "form-control" } %>
                     </div>
+                  </p>
+                  <p>
+                    <%= f.label :password %><br>
+                    <%= f.password_field :password, class: "form-control", placeholder: "Enter a password" %>
+                  </p>
+                  <p>
+                    <%= f.label :password_confirmation %><br>
+                    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm your password" %>
                   </p>
                   <div>
                     <%= f.submit "Create Profile", class: "btn btn-outline-success" %>
