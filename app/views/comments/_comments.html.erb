@@ -1,0 +1,45 @@
+<style>
+.comment {
+  background-color: #f9f9f9;
+}
+
+.comment .nested-comments {
+  border-left: 2px solid #ccc;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+.comment p {
+  margin-bottom: 5px;
+}
+
+.reply-form {
+  border: 1px solid #e3e3e3;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+</style>
+
+<% comments.each do |comment| %>
+  <div class="comment my-3 p-3 border rounded">
+    <p class="mb-1">
+      <strong><%= link_to comment.user.name, user_path(comment.user) %></strong>
+      <span class="text-muted"><%= comment.created_at.strftime('%B %d, %Y at %I:%M %p') %></span>
+    </p>
+    <p class="mb-2"><%= comment.content %></p>
+
+    <% if comment.replies.any? %>
+      <div class="nested-comments ml-4">
+        <%= render partial: 'comments/comments', locals: { comments: comment.replies, post: post } %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Reply', '#', class: 'btn btn-outline-primary btn-sm', data: { toggle: 'reply-form', comment_id: comment.id } %>
+
+    <div class="reply-form mt-2" id="reply-form-<%= comment.id %>" style="display: none;">
+      <%= render partial: 'comments/form', locals: { post: post, comment: post.comments.new(parent_comment_id: comment.id) } %>
+    </div>
+  </div>
+<% end %>
