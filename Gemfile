@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "3.2.1"
 gem 'pry'
 gem 'bcrypt', '~> 3.1.7'
+gem 'carrierwave', '~> 2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
