@@ -1,10 +1,16 @@
+<style>
+  .img-fluid{
+    height: 300px !important;
+    width: 300px !important;
+  }
+</style>
 <div class="container mt-5">
   <div class="card shadow-sm">
     <div class="card-body">
       <h5 class="card-title"><%= link_to @post.user.name, user_path(@post.user) %></h5>
       <% if @post.image.present? %>
         <div class="mb-3 text-center">
-          <%= image_tag @post.image.url, class: "img-fluid rounded post-image" %>
+            <%= image_tag post.image.url, class: "img-fluid rounded post-image" %>
         </div>
       <% end %>
       <p class="card-text"><%= @post.content %></p>
@@ -37,4 +43,3 @@
     });
   });
 </script>
-
