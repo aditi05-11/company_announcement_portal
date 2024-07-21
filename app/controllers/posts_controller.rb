@@ -35,6 +35,8 @@ class PostsController < ApplicationController
 
 
   def show
+    @comments = @post.comments.where(parent_comment_id: nil)
+    @comment = Comment.new
   end
 
   private
