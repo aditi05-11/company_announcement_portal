@@ -14,9 +14,11 @@
             <p class="card-text"><i class="fas fa-calendar-alt me-2"></i><strong>Date of Birth:</strong></p>
             <p class="card-text"><%= @user.date_of_birth.strftime("%B %e, %Y") %></p>
           </div>
+          <% if @user == current_user %>
             <div class="text-center">
             <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
            </div>
+          <% end %> 
          </div>
         </div>
       </div>
