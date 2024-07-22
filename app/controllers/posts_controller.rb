@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login, except: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.includes(:user).order(created_at: :desc)
@@ -37,6 +37,12 @@ class PostsController < ApplicationController
   def show
     @comments = @post.comments.where(parent_comment_id: nil)
     @comment = Comment.new
+  end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = "Post was successfully deleted."
+    redirect_to posts_path
   end
 
   private
