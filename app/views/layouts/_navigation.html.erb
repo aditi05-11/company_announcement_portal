@@ -23,7 +23,7 @@
             <%= link_to 'Edit Profile', edit_user_path(session[:user_id]), class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
+            <%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link' %>
           </li>
         <% else %>
           <li class="nav-item">
