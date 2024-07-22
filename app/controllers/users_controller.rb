@@ -36,6 +36,12 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path, notice: 'User was successfully deleted.'
+  end
+
 	private
 
 	def user_params
@@ -49,7 +55,4 @@ class UsersController < ApplicationController
   def parse_date_of_birth(date_params)
     Date.new(date_params["date_of_birth_year"].to_i, date_params["date_of_birth_month"].to_i, date_params["date_of_birth_day"].to_i)
   end
-
-
-
 end
